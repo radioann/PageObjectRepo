@@ -12,13 +12,14 @@ public class MainPage {
     private By signInButton = By.xpath("//a[contains(text(),'Sign in')]");
     private By signUpButton = By.xpath("//a[contains(text(),'Sign up')][1]");
     private By signUpForGitHubButton = By.xpath("//button[@class='btn-mktg btn-primary-mktg btn-large-mktg f4 btn-block my-3']");
-    private By username = By.xpath("//input[@id='user[login]']");
-    private By email = By.xpath("//input[@id='user[email]");
-    private By password = By.xpath("//input[@id='user[password]']");
+    private By usernameField = By.xpath("//input[@id='user[login]']");
+    private By emailField = By.xpath("//input[@id='user[email]");
+    private By passwordField = By.xpath("//input[@id='user[password]']");
 
-    public void clickSignUpForGitHub(){
-        driver.findElement(signUpForGitHubButton).click();
+    public MainPage() {
+
     }
+
 
     //Method returns LogIn page by clicking SignIn button
     public LogInPage clickSignIn() {
@@ -28,6 +29,38 @@ public class MainPage {
     //Method returns SignUp page by clicking SignUp button
     public SignUpPage clickSignUp(){
         driver.findElement(signUpButton).click();
+        return new SignUpPage(driver);
+    }
+
+    public SignUpPage clickSignUpForGitHub() {
+        driver.findElement(signUpForGitHubButton).click();
+        return new SignUpPage(driver);
+    }
+
+    //Methods for filling the input fields on Main  Page
+
+    public MainPage fillUsername(String username){
+        driver.findElement(usernameField).sendKeys(username);
+        return this;
+    }
+
+    public MainPage fillEmail(String email) {
+        driver.findElement(emailField).sendKeys(email);
+        return this;
+    }
+
+    public MainPage fillPassword(String password) {
+        driver.findElement(passwordField).sendKeys(password);
+        return this;
+    }
+
+    //Method Register having created methods inside it
+
+    public SignUpPage register(String username, String email, String password){
+        this.fillUsername(username);
+        this.fillEmail(email);
+        this.fillPassword(password);
+        this.clickSignUpForGitHub();
         return new SignUpPage(driver);
     }
 }
