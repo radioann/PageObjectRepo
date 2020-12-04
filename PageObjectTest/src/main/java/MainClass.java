@@ -13,7 +13,7 @@ public class MainClass {
         MainPage mainPage = new MainPage();
         WebDriver driver = new ChromeDriver();
 
-
+        driver.get("https://github.com/");
         mainPage.register("tes7145", "tes7145@im.com", "Qwerty143!");
 
     }

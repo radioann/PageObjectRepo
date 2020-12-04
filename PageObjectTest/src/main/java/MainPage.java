@@ -1,13 +1,10 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class MainPage {
 
     private WebDriver driver;
-
-    public MainPage(WebDriver driver) {
-        this.driver = driver;
-    }
 
     private By signInButton = By.xpath("//a[contains(text(),'Sign in')]");
     private By signUpButton = By.xpath("//a[contains(text(),'Sign up')][1]");
@@ -15,10 +12,6 @@ public class MainPage {
     private By usernameField = By.xpath("//input[@id='user[login]']");
     private By emailField = By.xpath("//input[@id='user[email]");
     private By passwordField = By.xpath("//input[@id='user[password]']");
-
-    public MainPage() {
-
-    }
 
 
     //Method returns LogIn page by clicking SignIn button
