@@ -13,6 +13,9 @@ public class MainPage {
     private By emailField = By.xpath("//input[@id='user[email]");
     private By passwordField = By.xpath("//input[@id='user[password]']");
 
+    public MainPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     //Method returns LogIn page by clicking SignIn button
     public LogInPage clickSignIn() {

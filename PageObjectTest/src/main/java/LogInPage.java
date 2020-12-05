@@ -14,6 +14,7 @@ public class LogInPage {
     private By logInButton = By.xpath("//input[@value='Sign in']");
     private By logoHeader = By.xpath("//div[@class='auth-form-header p-0']");
     private By errorMessage = By.xpath("//div[@class='container-lg px-2']");
+    private By createAccountButton = By.xpath("//a[normalize-space()='Create an account']");
 
     public LogInPage fillLogInField(String login){
         driver.findElement(logInField).sendKeys(login);
@@ -44,6 +45,11 @@ public class LogInPage {
 
     public String getErrorMessage(){
         return driver.findElement(errorMessage).getText();
+    }
+
+    public SignUpPage clickCreateAccount(){
+        driver.findElement(createAccountButton).click();
+        return new SignUpPage(driver);
     }
 
 
