@@ -20,7 +20,7 @@ public class MainPageTest {
     }
 
     @Test
-    @Ignore
+
     public void signIn(){
         LogInPage logInPage = mainPage.clickSignIn();
         String header = logInPage.getHeaderText();
@@ -28,18 +28,18 @@ public class MainPageTest {
     }
 
     @Test
-    @Ignore
     public void signUp(){
         //SignUpPage signUpPage = mainPage.clickSignUpForGitHub();
-        SignUpPage signUpPage = new SignUpPage(driver);
+        SignUpPage signUpPage = mainPage.clickSignUp();
         signUpPage.fillEmailField("khlgsh");
         String invalidEmail = signUpPage.emailErrorText();
         //Email is invalid or already taken
-        Assert.assertEquals("gljglj", invalidEmail);
+        Assert.assertEquals("Email is invalid or already taken", invalidEmail);
 
     }
 
     @Test
+
     public void signUpWithEmptyUserName(){
         SignUpPage signUpPage = mainPage.register("", "gkjbklknnkjv@kjbjk.com", "woijhoi778");
         String suggestedError = signUpPage.suggestedUserNameText();

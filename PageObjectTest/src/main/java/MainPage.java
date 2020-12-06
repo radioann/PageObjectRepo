@@ -3,15 +3,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class MainPage {
 
     private WebDriver driver;
 
-    //@FindBy(xpath = "//a[@href='/login']")
-    //private WebElement signInButton;
+    @FindBy(xpath = "//a[@href='/login']")
     private WebElement signInButton;
-    @FindBy(xpath = "//a[class$='HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1']")
+    //private WebElement signInButton;
+    @FindBy(css = "a[class='HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1']")
     private WebElement signUpButton;
     @FindBy(xpath = "//button[@class='btn-mktg btn-primary-mktg btn-large-mktg f4 btn-block my-3']")
     private WebElement signUpForGitHubButton;
@@ -24,8 +25,9 @@ public class MainPage {
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(this.driver, this);
     }
-
+/*
     public WebElement getSignInButton(){
         if(this.signInButton == null){
             this.signInButton = this.driver.findElement(By.xpath("//a[@href='/login']"));
@@ -34,15 +36,23 @@ public class MainPage {
         return this.signInButton;
     }
 
+    public WebElement getSignUpButtonButton(){
+        if(this.signUpButton == null){
+            this.signUpButton = this.driver.findElement(By.cssSelector("a[class='HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1']"));
+        }
+
+        return this.signUpButton;
+    }
+*/
     //Method returns LogIn page by clicking SignIn button
     public LogInPage clickSignIn() {
-        getSignInButton().click();
+        signInButton.click();
         return new LogInPage(this.driver);
     }
     //Method returns SignUp page by clicking SignUp button
     public SignUpPage clickSignUp(){
         signUpButton.click();
-        return new SignUpPage(driver);
+        return new SignUpPage(this.driver);
     }
 
     public SignUpPage clickSignUpForGitHub() {
