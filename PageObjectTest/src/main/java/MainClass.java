@@ -22,7 +22,10 @@ public class MainClass {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
 
         driver.get("https://github.com/");
-        mainPage.register("tes7145", "tes7145@im.com", "Qwerty143!");
+        //mainPage.register("tes7145", "tes7145@im.com", "Qwerty143!");
+        //mainPage.clickSignIn();
+        mainPage.clickSignUpForGitHub();
+
 
     }
 }
