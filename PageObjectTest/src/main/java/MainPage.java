@@ -18,7 +18,7 @@ public class MainPage {
     private WebElement signUpForGitHubButton;
     @FindBy(xpath = "//input[@id='user[login]']")
     private WebElement usernameField;
-    @FindBy(xpath = "//input[@id='user[email]")
+    @FindBy(xpath = "//input[@id='user[email]']")
     private WebElement emailField;
     @FindBy(xpath = "//input[@id='user[password]']")
     private WebElement passwordField;

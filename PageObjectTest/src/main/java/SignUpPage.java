@@ -17,6 +17,7 @@ public class SignUpPage {
     private By invalidEmailError = By.xpath("//input[@name='user[email]']/parent::dd/following-sibling::dd");
     private By invalidPasswordError = By.xpath("//dd[@id='input-check-2677']");
     private By suggestedUserName = By.xpath("//div[contains(@class,'js-suggested-usernames-container')]");
+    private By blankUsernameError = By.xpath("//input[@name='user[login]']/ancestor::dd/following-sibling::dd");
 
     public SignUpPage fillInUsername(String username){
         driver.findElement(usernameField).sendKeys(username);
@@ -55,6 +56,13 @@ public class SignUpPage {
         return error;
     }
 
+    public String emptyUserText(){
+        String emptyUserError = driver.findElement(blankUsernameError).getText();
+        return emptyUserError;
+    }
+
+
+
     public String suggestedUserNameText(){
         return driver.findElement(suggestedUserName).getText();
     }
@@ -62,5 +70,8 @@ public class SignUpPage {
     public String invalidPasswordText(){
         return driver.findElement(invalidPasswordError).getText();
     }
+
+
+
 
 }

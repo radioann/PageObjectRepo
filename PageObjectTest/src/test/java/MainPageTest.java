@@ -42,8 +42,8 @@ public class MainPageTest {
 
     public void signUpWithEmptyUserName(){
         SignUpPage signUpPage = mainPage.register("", "gkjbklknnkjv@kjbjk.com", "woijhoi778");
-        String suggestedError = signUpPage.suggestedUserNameText();
-        Assert.assertEquals("Username can't be blank", suggestedError);
+        String userError = signUpPage.emptyUserText();
+        Assert.assertEquals("Username can't be blank", userError);
 
     }
 
