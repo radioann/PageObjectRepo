@@ -8,9 +8,10 @@ public class MainPage {
 
     private WebDriver driver;
 
-    @FindBy(xpath = "//a[@href='/login']")
-    public WebElement signInButton;
-    @FindBy(xpath = "a[class$='HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1']")
+    //@FindBy(xpath = "//a[@href='/login']")
+    //private WebElement signInButton;
+    private WebElement signInButton;
+    @FindBy(xpath = "//a[class$='HeaderMenu-link d-inline-block no-underline border border-gray-dark rounded-1 px-2 py-1']")
     private WebElement signUpButton;
     @FindBy(xpath = "//button[@class='btn-mktg btn-primary-mktg btn-large-mktg f4 btn-block my-3']")
     private WebElement signUpForGitHubButton;
@@ -25,9 +26,17 @@ public class MainPage {
         this.driver = driver;
     }
 
+    public WebElement getSignInButton(){
+        if(this.signInButton == null){
+            this.signInButton = this.driver.findElement(By.xpath("//a[@href='/login']"));
+        }
+
+        return this.signInButton;
+    }
+
     //Method returns LogIn page by clicking SignIn button
     public LogInPage clickSignIn() {
-        signInButton.click();
+        getSignInButton().click();
         return new LogInPage(this.driver);
     }
     //Method returns SignUp page by clicking SignUp button

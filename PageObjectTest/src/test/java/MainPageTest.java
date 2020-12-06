@@ -15,8 +15,8 @@ public class MainPageTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+        driver.get("https://github.com");
         mainPage = new MainPage(driver);
-        driver.get("https://github.com/join");
     }
 
     @Test
@@ -24,11 +24,11 @@ public class MainPageTest {
     public void signIn(){
         LogInPage logInPage = mainPage.clickSignIn();
         String header = logInPage.getHeaderText();
-        Assert.assertEquals("Sign in to Github", header);
+        Assert.assertEquals("Sign in to GitHub", header);
     }
 
     @Test
-
+    @Ignore
     public void signUp(){
         //SignUpPage signUpPage = mainPage.clickSignUpForGitHub();
         SignUpPage signUpPage = new SignUpPage(driver);
@@ -38,6 +38,15 @@ public class MainPageTest {
         Assert.assertEquals("gljglj", invalidEmail);
 
     }
+
+    @Test
+    public void signUpWithEmptyUserName(){
+        SignUpPage signUpPage = mainPage.register("", "gkjbklknnkjv@kjbjk.com", "woijhoi778");
+        String suggestedError = signUpPage.suggestedUserNameText();
+        Assert.assertEquals("Username can't be blank", suggestedError);
+
+    }
+
 
 
     @After
