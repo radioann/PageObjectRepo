@@ -15,7 +15,7 @@ public class SignUpPage {
     private By emailCheckBox = By.xpath("//input[@id='all_emails']");
     private By signUpButton = By.xpath("//button[normalize-space()='Create account']");
     private By invalidEmailError = By.xpath("//input[@name='user[email]']/parent::dd/following-sibling::dd");
-    private By invalidPasswordError = By.xpath("//dd[@id='input-check-2677']");
+    private By invalidPasswordError = By.xpath("//input[@name='user[password]']/parent::dd/following-sibling::dd");
     private By suggestedUserName = By.xpath("//div[contains(@class,'js-suggested-usernames-container')]");
     private By blankUsernameError = By.xpath("//input[@name='user[login]']/ancestor::dd/following-sibling::dd");
     private By signUpHeader = By.xpath("//h1[normalize-space()='Create your account']");
@@ -48,7 +48,7 @@ public class SignUpPage {
         this.fillEmailField(email);
         this.fillPasswordField(password);
         this.markCheckbox();
-        this.driver.findElement(signUpButton).click();
+        //this.driver.findElement(signUpButton).click();
         return new SignUpPage(driver);
     }
 
@@ -74,6 +74,10 @@ public class SignUpPage {
 
     public String invalidPasswordText(){
         return driver.findElement(invalidPasswordError).getText();
+    }
+
+    public String errorUserNameText(){
+        return driver.findElement(blankUsernameError).getText();
     }
 
 
