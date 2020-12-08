@@ -18,6 +18,7 @@ public class SignUpPage {
     private By invalidPasswordError = By.xpath("//dd[@id='input-check-2677']");
     private By suggestedUserName = By.xpath("//div[contains(@class,'js-suggested-usernames-container')]");
     private By blankUsernameError = By.xpath("//input[@name='user[login]']/ancestor::dd/following-sibling::dd");
+    private By signUpHeader = By.xpath("//h1[normalize-space()='Create your account']");
 
     public SignUpPage fillInUsername(String username){
         driver.findElement(usernameField).sendKeys(username);
@@ -59,6 +60,10 @@ public class SignUpPage {
     public String emptyUserText(){
         String emptyUserError = driver.findElement(blankUsernameError).getText();
         return emptyUserError;
+    }
+
+    public String signUpHeader(){
+        return driver.findElement(signUpHeader).getText();
     }
 
 
